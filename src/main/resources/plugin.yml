@@ -1,0 +1,5 @@
+name: thmEnchantments
+version: 1.0
+author: thmihnea
+description: Plugin for enchantments.
+main: com.thmihnea.EnchantmentsPlugin
