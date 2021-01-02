@@ -1,6 +1,9 @@
 package com.thmihnea;
 
-import com.thmihnea.action.StatTrakPlayer;
+import com.thmihnea.action.actions.Earthquake;
+import com.thmihnea.action.actions.StatTrakPlayer;
+import com.thmihnea.action.actions.ThreeShot;
+import com.thmihnea.action.actions.Wings;
 import com.thmihnea.enchantment.Enchantment;
 import com.thmihnea.enchantment.EnchantmentHandler;
 import com.thmihnea.enchantment.EnchantmentManager;
@@ -36,11 +39,8 @@ public class EnchantmentsPlugin extends JavaPlugin {
         instance = this;
         Util.setupFiles();
         Util.registerEvents();
-        Enchantment stattrak = new Enchantment(105, "Stat Trak", 0, 5, EnchantmentTarget.WEAPON, Collections.emptyList(), Arrays.asList(new ItemStack(Material.DIAMOND_SWORD)), Collections.singletonList(new StatTrakPlayer()), false);
-        EnchantmentManager.addEnchantment(stattrak);
+        Util.setupEnchants();
         EnchantmentHandler.register();
-        for (Player player : Bukkit.getOnlinePlayers())
-            player.getItemInHand().addUnsafeEnchantment(stattrak, 1);
         getLogger().log(Level.INFO, "Plugin was successfully enabled. Process took: " + (System.currentTimeMillis() - this.startTime) + "ms");
     }
 

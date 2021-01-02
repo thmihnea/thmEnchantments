@@ -17,11 +17,10 @@ public abstract class EnchantmentWrapper extends Enchantment implements Runnable
     private int id;
     private EnchantmentTarget enchantmentTarget;
     private List<Enchantment> conflicts;
-    private List<ItemStack> targets;
     private List<Action> actions;
     private boolean runnable;
 
-    public EnchantmentWrapper(int id, String name, int startLevel, int maxLevel, EnchantmentTarget enchantmentTarget, List<Enchantment> conflicts, List<ItemStack> targets, List<Action> actions, boolean runnable) {
+    public EnchantmentWrapper(int id, String name, int startLevel, int maxLevel, EnchantmentTarget enchantmentTarget, List<Enchantment> conflicts, List<Action> actions, boolean runnable) {
         super(id);
         this.id = id;
         this.name = name;
@@ -29,7 +28,6 @@ public abstract class EnchantmentWrapper extends Enchantment implements Runnable
         this.startLevel = startLevel;
         this.enchantmentTarget = enchantmentTarget;
         this.conflicts = conflicts;
-        this.targets = targets;
         this.runnable = runnable;
         this.actions = actions;
     }
@@ -44,10 +42,6 @@ public abstract class EnchantmentWrapper extends Enchantment implements Runnable
 
     public List<Enchantment> getConflicts() {
         return this.conflicts;
-    }
-
-    public List<ItemStack> getTargets() {
-        return this.targets;
     }
 
     @Override
@@ -82,7 +76,6 @@ public abstract class EnchantmentWrapper extends Enchantment implements Runnable
 
     @Override
     public boolean canEnchantItem(ItemStack itemStack) {
-        //return this.targets.contains(itemStack);
         return true;
     }
 

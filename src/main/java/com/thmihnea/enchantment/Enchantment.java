@@ -6,16 +6,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
 public class Enchantment extends EnchantmentWrapper {
 
-    public Enchantment(int id, String name, int startLevel, int maxLevel, EnchantmentTarget enchantmentTarget, List<org.bukkit.enchantments.Enchantment> conflicts, List<ItemStack> targets, List<Action> actions, boolean runnable) {
-        super(id, name, startLevel, maxLevel, enchantmentTarget, conflicts, targets, actions, runnable);
+    public Enchantment(int id, String name, int startLevel, int maxLevel, EnchantmentTarget enchantmentTarget, List<org.bukkit.enchantments.Enchantment> conflicts, List<Action> actions, boolean runnable) {
+        super(id, name, startLevel, maxLevel, enchantmentTarget, conflicts, actions, runnable);
         if (this.isRunnable()) {
-            Bukkit.getScheduler().runTaskTimer(EnchantmentsPlugin.getInstance(), this, 0L, 20L);
+            Bukkit.getScheduler().runTaskTimer(EnchantmentsPlugin.getInstance(), this, 0L, EnchantmentsPlugin.cfg.getLong("actions.task-timer"));
         }
     }
 
